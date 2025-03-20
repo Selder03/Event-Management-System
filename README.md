@@ -1,2 +1,2 @@
 Route file - web.php
-auth file - 
+view/auth file - 
