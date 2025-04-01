@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <link rel="stylesheet" href="styles1.css">
+    <script>
+        function switchTab(tab) {
+            document.getElementById("attending-content").style.display = tab === 'attending' ? 'block' : 'none';
+            document.getElementById("organizing-content").style.display = tab === 'organizing' ? 'block' : 'none';
+
+            // Update active tab styling
+            document.getElementById("attending-tab").classList.toggle("active", tab === 'attending');
+            document.getElementById("organizing-tab").classList.toggle("active", tab === 'organizing');
+        }
+
+        // Ensure the default tab loads
+        document.addEventListener("DOMContentLoaded", function() {
+            switchTab('attending'); // Default to 'Attending an event' tab
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="feed.html">Home</a></li>
+            <li><a href="my-event.html">My Events</a></li>
+            <li><a href="create-event.html">Create Event</a></li>
+            <li><a href="help.html" class="active">Help</a></li>
+            <li><a href="event-reports.html">Reports</a></li>
+        </ul>
+    </nav>
+
+    <!-- Help Section -->
+    <section class="help-container">
+        <h1>How can we help?</h1>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search help articles...">
+        </div>
+
+        <!-- Tabs for Help Categories -->
+        <div class="tabs">
+            <button id="attending-tab" class="active" onclick="switchTab('attending')">Attending an event</button>
+            <button id="organizing-tab" onclick="switchTab('organizing')">Organizing an event</button>
+        </div>
+
+        <!-- Attending an Event Content -->
+        <div id="attending-content">
+            <h2>FAQs (Frequently Asked Questions)</h2>
+            <div class="articles-grid">
+                <div class="article"><span class="icon">📌</span><p>How do I register for an event?</p></div>
+                <div class="article"><span class="icon">📌</span><p>How do I cancel my registration?</p></div>
+                <div class="article"><span class="icon">📌</span><p>Can I edit my profile after signing up?</p></div>
+                <div class="article"><span class="icon">📌</span><p>How do I download my event certificate?</p></div>
+                <div class="article"><span class="icon">📌</span><p>What if I encounter an issue during registration?</p></div>
+                <div class="article"><span class="icon">📌</span><p>How do I contact the event organizer?</p></div>
+            </div>
+
+            <!-- User Guides -->
+            <h2>User Guides & Tutorials</h2>
+            <div class="articles-grid">
+                <div class="article"><span class="icon">📖</span><p>How to sign up as a participant, organizer, or admin</p></div>
+                <div class="article"><span class="icon">📖</span><p>How to manage registered events</p></div>
+                <div class="article"><span class="icon">📖</span><p>How to generate reports (for admins)</p></div>
+            </div>
+
+            <!-- Contact Support -->
+            <h2>Contact Support</h2>
+            <div class="articles-grid">
+                <div class="article"><span class="icon">💬</span><p><strong>Live Chat</strong> – Chat with an admin (if available)</p></div>
+                <div class="article"><span class="icon">📧</span><p><strong>Email Support</strong> – Submit inquiries via email</p></div>
+                <div class="article"><span class="icon">🎫</span><p><strong>Submit a Ticket</strong> – Describe your issue and receive a response</p></div>
+            </div>
+        </div>
+
+        <!-- Organizing an Event Content (Hidden by Default) -->
+        <div id="organizing-content" style="display: none;">
+            <h2>FAQs (For Organizers)</h2>
+            <div class="articles-grid">
+                <div class="article"><span class="icon">📌</span><p>How do I create an event?</p></div>
+                <div class="article"><span class="icon">📌</span><p>How do I edit or delete an event?</p></div>
+                <div class="article"><span class="icon">📌</span><p>How can I manage event participants?</p></div>
+                <div class="article"><span class="icon">📌</span><p>Can I limit the number of attendees?</p></div>
+                <div class="article"><span class="icon">📌</span><p>How do I send notifications to registered users?</p></div>
+                <div class="article"><span class="icon">📌</span><p>Can I view participant feedback?</p></div>
+            </div>
+
+            <!-- Event Management Guide -->
+            <h2>Event Management Guide</h2>
+            <div class="articles-grid">
+                <div class="article"><span class="icon">📖</span><p>Creating a new event (title, date, location, capacity, ticketing)</p></div>
+                <div class="article"><span class="icon">📖</span><p>Editing and updating event details</p></div>
+                <div class="article"><span class="icon">📖</span><p>Cancelling an event & notifying attendees</p></div>
+                <div class="article"><span class="icon">📖</span><p>Setting ticket prices (if applicable)</p></div>
+            </div>
+
+            <!-- Contact Support for Organizers -->
+            <h2>Contact Support for Organizers</h2>
+            <div class="articles-grid">
+                <div class="article"><span class="icon">💬</span><p>Live Chat – Immediate support for urgent issues</p></div>
+                <div class="article"><span class="icon">📧</span><p>Email Support – organizer-support@eventsystem.com</p></div>
+                <div class="article"><span class="icon">🎫</span><p>Request Admin Assistance – Send a support request to the platform admin</p></div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Event Management System | All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
