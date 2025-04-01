@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <section>
+        <div class="container">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="feed.html">Home</a></li>
+                    <li><a href="my-event.html">My Events</a></li>
+                    <li><a href="create-event.html" class="active">Create Event</a></li>
+                    <li><a href="help.html">Help</a></li>
+                    <li><a href="event-reports.html">Reports</a></li>
+                </ul>
+                <div class="profile-container">
+                    <div class="profile-icon" onclick="toggleProfileMenu()">
+                        <img src="profile.jpg" alt="Profile">
+                    </div>
+                    <div id="profile-menu" class="profile-menu">
+                        <ul>
+                            <li><i class="fas fa-user"></i> Edit Profile</li>
+                            <li><i class="fas fa-cog"></i> Settings</li>
+                            <li class="logout"><i class="fas fa-sign-out-alt"></i> Log out</li>
+                        </ul>
+                    </div>
+            </nav>
+
+            <div class="create-event">
+                <h2>📅 Create a New Event</h2>
+                <form id="eventForm">
+                    <div class="form-container">
+                        <!-- Left Column: Event Details -->
+                        <div class="left-column">
+                            <div class="form-section">
+                                <h3>🎟️ Event Details</h3>
+                                <label for="eventTitle">Event Title:</label>
+                                <input type="text" id="eventTitle" placeholder="Enter a catchy event title" required>
+
+                                <label for="eventDescription">Event Description:</label>
+                                <textarea id="eventDescription" placeholder="Describe the event in detail" required></textarea>
+
+                                <label for="eventBanner">Event Banner/Image:</label>
+                                <input type="file" id="eventBanner" accept="image/*">
+                            </div>
+
+                            <div class="form-section">
+                                <h3>📍 Event Time & Location</h3>
+                                <label for="eventDate">Event Date:</label>
+                                <input type="date" id="eventDate" required>
+
+                                <label for="startTime">Start Time:</label>
+                                <input type="time" id="startTime" required>
+
+                                <label for="endTime">End Time:</label>
+                                <input type="time" id="endTime" required>
+
+                                <label for="venue">Venue/Location:</label>
+                                <input type="text" id="venue" placeholder="Enter location or meeting link" required>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Registration & Organizer Info -->
+                        <div class="right-column">
+                            <div class="form-section">
+                                <h3>📝 Registration Details</h3>
+                                <label for="maxAttendees">Max Attendees:</label>
+                                <input type="number" id="maxAttendees" placeholder="Enter limit" required>
+
+                                <div class="toggle-container">
+                                    <label>Registration Required?</label>
+                                    <input type="checkbox" id="registrationRequired">
+                                </div>
+
+                                <label for="registrationDeadline">Registration Deadline:</label>
+                                <input type="date" id="registrationDeadline">
+                                
+                                <label for="ticketType">Ticket Type:</label>
+                                <select id="ticketType">
+                                    <option value="free">Free</option>
+                                    <option value="paid">Paid</option>
+                                </select>
+
+                                <label for="ticketPrice">Ticket Price (if paid):</label>
+                                <input type="number" id="ticketPrice" placeholder="Enter amount">
+                            </div>
+
+                            <div class="form-section">
+                                <h3>📢 Organizer Information</h3>
+                                <label for="organizerName">Organizer Name:</label>
+                                <input type="text" id="organizerName" placeholder="Enter organizer name" required>
+
+
+                                <label for="contactEmail">Contact Email:</label>
+                                <input type="email" id="contactEmail" placeholder="Enter email for inquiries" required>
+
+                                <label for="contactPhone">Contact Phone (Optional):</label>
+                                <input type="tel" id="contactPhone" placeholder="Enter phone number" pattern="[0-9]+" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="post-btn">📢 Post Event</button>
+                        <button type="button" class="cancel-btn" onclick="cancelForm()">❌ Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function cancelForm() {
+            document.getElementById('eventForm').reset();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const descriptionField = document.getElementById("eventDescription");
+
+        // Function to auto-expand the textarea
+        function autoExpand() {
+            this.style.height = "auto"; // Reset height
+            this.style.height = this.scrollHeight + "px"; // Set new height
+        }
+
+        descriptionField.addEventListener("input", autoExpand);
+    });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

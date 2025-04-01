@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="styles1.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const params = new URLSearchParams(window.location.search);
+            const eventId = params.get("event_id");
+
+            const events = {
+                1: {
+                    title: "Tech Seminar",
+                    date: "April 10, 2024",
+                    start_time: "10:00 AM",
+                    end_time: "2:00 PM",
+                    venue: "Auditorium",
+                    description: "A seminar on AI and cybersecurity.",
+                    max_attendees: "100",
+                    registration_required: "Yes",
+                    registration_deadline: "April 5, 2024",
+                    ticket_type: "Standard",
+                    ticket_price: "$10",
+                    organizer_name: "John Doe",
+                    contact_email: "johndoe@example.com",
+                    contact_phone: "123-456-7890"
+                },
+                2: {
+                    title: "Music Fest",
+                    date: "April 15, 2024",
+                    start_time: "5:00 PM",
+                    end_time: "10:00 PM",
+                    venue: "Main Hall",
+                    description: "An evening of live music performances.",
+                    max_attendees: "500",
+                    registration_required: "No",
+                    registration_deadline: "N/A",
+                    ticket_type: "VIP",
+                    ticket_price: "$50",
+                    organizer_name: "Jane Smith",
+                    contact_email: "janesmith@example.com",
+                    contact_phone: "987-654-3210"
+                }
+            };
+
+            if (events[eventId]) {
+                const event = events[eventId];
+                document.getElementById("event-title").innerText = event.title;
+                document.getElementById("event-date").innerText = event.date;
+                document.getElementById("event-time").innerText = event.start_time + " - " + event.end_time;
+                document.getElementById("event-venue").innerText = event.venue;
+                document.getElementById("event-description").innerText = event.description;
+                document.getElementById("max-attendees").innerText = event.max_attendees;
+                document.getElementById("registration-required").innerText = event.registration_required;
+                document.getElementById("registration-deadline").innerText = event.registration_deadline;
+                document.getElementById("ticket-type").innerText = event.ticket_type;
+                document.getElementById("ticket-price").innerText = event.ticket_price;
+                document.getElementById("organizer-name").innerText = event.organizer_name;
+                document.getElementById("contact-email").innerText = event.contact_email;
+                document.getElementById("contact-phone").innerText = event.contact_phone;
+            } else {
+                document.getElementById("event-details").innerHTML = "<h2>Event not found</h2>";
+            }
+        });
+    </script>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="feed.html">Home</a></li>
+                    <li><a href="my-event.html">My Events</a></li>
+                    <li><a href="create-event.html">Create Event</a></li>
+                    <li><a href="help.html">Help</a></li>
+                    <li><a href="event-reports.html">Reports</a></li>
+                </ul>
+                <div class="profile-container">
+                    <div class="profile-icon" onclick="toggleProfileMenu()">
+                        <img src="profile.jpg" alt="Profile">
+                    </div>
+                    <div id="profile-menu" class="profile-menu">
+                        <ul>
+                            <li><i class="fas fa-user"></i> Edit Profile</li>
+                            <li><i class="fas fa-cog"></i> Settings</li>
+                            <li class="logout"><i class="fas fa-sign-out-alt"></i> Log out</li>
+                        </ul>
+                    </div>
+            </nav>
+
+            <div class="form-container">
+                <h2 id="event-title"></h2>
+                <div class="form-section">
+                    <h3>🎟️ Event Details</h3>
+                    <p><strong>Date:</strong> <span id="event-date"></span></p>
+                    <p><strong>Time:</strong> <span id="event-time"></span></p>
+                    <p><strong>Venue:</strong> <span id="event-venue"></span></p>
+                    <p><strong>Description:</strong> <span id="event-description"></span></p>
+                </div>
+
+                <div class="form-section">
+                    <h3>📝 Registration Details</h3>
+                    <p><strong>Max Attendees:</strong> <span id="max-attendees"></span></p>
+                    <p><strong>Registration Required:</strong> <span id="registration-required"></span></p>
+                    <p><strong>Registration Deadline:</strong> <span id="registration-deadline"></span></p>
+                    <p><strong>Ticket Type:</strong> <span id="ticket-type"></span></p>
+                    <p><strong>Ticket Price:</strong> <span id="ticket-price"></span></p>
+                </div>
+
+                <div class="form-section">
+                    <h3>📢 Organizer Information</h3>
+                    <p><strong>Name:</strong> <span id="organizer-name"></span></p>
+                    <p><strong>Email:</strong> <span id="contact-email"></span></p>
+                    <p><strong>Phone:</strong> <span id="contact-phone"></span></p>
+                </div>
+
+                <div class="button-container">
+                    <button class="btn" onclick="window.location.href='participants.html?event_id=' + new URLSearchParams(window.location.search).get('event_id');">List of Participants</button>
+                    <button class="btn" onclick="window.location.href='edit-event.html?event_id=' + new URLSearchParams(window.location.search).get('event_id');">Edit</button>
+                    <button class="btn" onclick="window.history.back();">Back</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
